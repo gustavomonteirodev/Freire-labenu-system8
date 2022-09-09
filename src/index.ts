@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { AddressInfo } from "net"
 import app from "./app"
 
@@ -9,3 +10,11 @@ const server = app.listen(process.env.PORT || 3003, () => {
         console.error(`Failure upon starting server.`)
     }
 })
+=======
+import app from "./app";
+// import  createUser  from "./endpoints/createUser";
+// import getAllUsers from "./endpoints/getUsers";
+
+
+// app.get("/users", getAllUsers)
+>>>>>>> master
