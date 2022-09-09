@@ -1,9 +1,4 @@
 node_modules
-<<<<<<< HEAD
-package-lock.json
-build
-.env
-=======
 build
 .vscode
 
@@ -11,4 +6,3 @@ build
 
 requests.rest
 queries.sql
->>>>>>> master
