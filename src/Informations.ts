@@ -39,7 +39,7 @@ export class Estudante extends InfoPessoais {
     }
 }
 
-class Docente extends InfoPessoais {
+export class Docente extends InfoPessoais {
     private especialidades: string[] = []
     constructor(id: string, nome: string, email: string, data_nasc: string, turma_id: string, especialidades?: string[]) {
         super(id, nome, email, data_nasc, turma_id)
