@@ -54,7 +54,7 @@ class EstudanteEndpoint {
         }
     }
 
-    async buscarEstudantePorName(req: Request, res: Response) {
+    async buscarEstudantePorNome(req: Request, res: Response) {
         try {
             const { nome } = req.params
 
