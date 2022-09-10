@@ -11,3 +11,33 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3003/estudante/testeNome
+
+###
+POST http://localhost:3003/estudante/mudar-turma/idDoestudante
+Content-Type: application/json
+
+{
+    "turmaId": "idDaTurma"
+}
+
+###
+Get http://localhost:3003/docente
+
+###
+POST http://localhost:3003/docente
+Content-Type: application/json
+
+{
+    "nome": "Nome Docente teste",
+    "email": "docente@email.com",
+    "dataNasc": "01/01/1981",
+    "turmaId": "id da Turma"
+}
+
+###
+POST  http://localhost:3003/docente/mudar-turma/idDoDocente
+Content-Type: application/json
+
+{
+    "turmaId": "id da nova turma"
+}

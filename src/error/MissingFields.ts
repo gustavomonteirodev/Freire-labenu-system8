@@ -1,14 +1,7 @@
-class BaseError extends Error{
-    public statusCode:number 
-
-    constructor(message:string,statusCode:number){
-        super(message)
-        this.statusCode = statusCode
-    }
-}
+import { BaseError } from "./BaseError"
 
 export class MissingFields extends BaseError {
     constructor(){
-        super("Missing fields to complete",404)
+        super("Verifique se todos os dados foram enviados.", 404)
     }
 }
