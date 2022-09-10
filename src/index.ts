@@ -3,8 +3,6 @@ import { app } from "./app";
 import EstudanteEndpoint from "./endpoints/EstudanteEndpoint";
 import DocenteEndpoint from "./endpoints/DocenteEndpoint";
 import TurmaController from "./endpoints/Turma";
-// import  createUser  from "./endpoints/createUser";
-// import getAllUsers from "./endpoints/getUsers";
 
 const estudante = new EstudanteEndpoint()
 const docente = new DocenteEndpoint()
@@ -23,4 +21,3 @@ app.get("/docente", docente.buscarTodosDocentes)
 app.post("/docente", docente.criarDocente)
 app.post("/docente/mudar-turma/:id", docente.mudarTurmaDocente)
 
-// app.get("/users", getAllUsers)
