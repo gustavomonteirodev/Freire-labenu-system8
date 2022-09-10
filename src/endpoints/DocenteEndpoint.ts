@@ -1,14 +1,14 @@
 import { Request, Response } from "express"
-import { TeacherData } from "../data/TeacherData"
+import { DocenteData } from "../data/DocenteData"
 import { EmailJaCadastrado } from "../error/EmailJaCadastrado"
 import { MissingFields } from "../error/MissingFields"
 import moment from "moment"
 import { Docente } from "../Informations"
 import { UsuarioNaoCadastrado } from "../error/UsuarioNaoCadastrado"
 
-class TeacherController {
+class DocenteEndpoint {
 
-    async CreateTeacher(req: Request, res: Response) {
+    async criarDocente(req: Request, res: Response) {
         try {
             const { nome, email, dataNasc, turmaId } = req.body
 
@@ -16,9 +16,9 @@ class TeacherController {
                 throw new MissingFields()
             }
 
-            const docenteData = new TeacherData()
+            const docenteData = new DocenteData()
 
-            const emailExiste = await docenteData.selectTeacherByEmail(email)
+            const emailExiste = await docenteData.selecionarDocentePorEmail(email)
 
             if (emailExiste) {
                 throw new EmailJaCadastrado()
@@ -32,8 +32,6 @@ class TeacherController {
 
             const dataConvertida = moment(dataNasc, "DD/MM/YYYY").format("YYYY-MM-DD")
 
-            const id = Date.now().toString()
-
             const docente = new Docente(
                 Date.now().toString(),
                 nome, 
@@ -42,7 +40,7 @@ class TeacherController {
                 turmaId
             )
 
-            const response = await docenteData.createTeacher(docente)
+            const response = await docenteData.inserirDocente(docente)
 
             res.status(201).send({ message: response })
 
@@ -51,12 +49,12 @@ class TeacherController {
         }
     }
 
-    async GetAllTeachers(req: Request, res: Response) {
+    async buscarTodosDocentes(req: Request, res: Response) {
         try {
 
-            const docenteData = new TeacherData()
+            const docenteData = new DocenteData()
 
-            const todosDocentes = await docenteData.selectAllTeachers()
+            const todosDocentes = await docenteData.selecionarTodosDocentes()
 
             res.status(200).send(todosDocentes)
         } catch (error: any) {
@@ -64,14 +62,14 @@ class TeacherController {
         }
     }
 
-    async ChangeClass(req: Request, res: Response) {
+    async mudarTurmaDocente(req: Request, res: Response) {
         try {
             const id = req.params.id
             const { turmaId } = req.body
 
-            const docenteData = new TeacherData()
+            const docenteData = new DocenteData()
 
-            const docenteExiste = await docenteData.selectTeacherById(id)
+            const docenteExiste = await docenteData.selecionarDocentePorId(id)
 
             if (!docenteExiste) {
                 throw new UsuarioNaoCadastrado()
@@ -85,7 +83,7 @@ class TeacherController {
             //     throw new turmaInvalida()
             // }
 
-            const response = await docenteData.updateTeacherClass(id, turmaId)
+            const response = await docenteData.atualizarClasseDoDocente(id, turmaId)
 
             res.status(200).send({ message: response })
 
@@ -94,4 +92,4 @@ class TeacherController {
         }
     }
 }
-export default TeacherController
+export default DocenteEndpoint

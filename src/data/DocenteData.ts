@@ -1,9 +1,9 @@
 import { Docente } from "../Informations";
 import BaseDataBase from "./BaseDataBase";
 
-export class TeacherData extends BaseDataBase {
+export class DocenteData extends BaseDataBase {
 
-    async createTeacher(docente: Docente) {
+    async inserirDocente(docente: Docente) {
 
         await this.getConnetion().insert({
             id: docente.getId(),
@@ -16,7 +16,7 @@ export class TeacherData extends BaseDataBase {
         return `O Docente:'${docente.getNome()}' foi cadastrado com sucesso!`
     }
 
-    async selectTeacherByEmail(email: string) {
+    async selecionarDocentePorEmail(email: string) {
         
         const result = await this.getConnetion()
             .select("*")
@@ -26,7 +26,7 @@ export class TeacherData extends BaseDataBase {
         return result[0]
     }
 
-    async selectAllTeachers(): Promise<Docente[]> {
+    async selecionarTodosDocentes(): Promise<Docente[]> {
         const result = await this.getConnetion()
             .select("*")
             .from("Docente")
@@ -39,7 +39,7 @@ export class TeacherData extends BaseDataBase {
 
     }
 
-    async selectTeacherById(id: string):Promise<Docente| undefined> {
+    async selecionarDocentePorId(id: string):Promise<Docente| undefined> {
         const result = await this.getConnetion()
             .select("*")
             .from("Docente")
@@ -52,7 +52,7 @@ export class TeacherData extends BaseDataBase {
         return new Docente(result[0].nome, result[0].email, result[0].data_nasc, result[0].turma_id, result[0].id)
     }
 
-    async updateTeacherClass(id: string, turmaId: string): Promise<string> {
+    async atualizarClasseDoDocente(id: string, turmaId: string): Promise<string> {
         await this.getConnetion()
             .update({ turma_id: turmaId })
             .into("Docente")
