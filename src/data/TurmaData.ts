@@ -8,7 +8,7 @@ export class TurmaData extends BaseDataBase {
         await this.getConnetion().insert({
             id: turma.getId(),
             nome: turma.getNome()
-        }).into("turma")
+        }).into("Turma")
 
         return `turma ${turma.getNome()} criada com sucesso `
     }
@@ -17,7 +17,7 @@ export class TurmaData extends BaseDataBase {
 
         const result = await this.getConnetion()
             .select("*")
-            .from("turma")
+            .from("Turma")
             .where("modulo", ">", 0)
 
         const todasTurmas = result.map((turma) => {
@@ -30,7 +30,7 @@ export class TurmaData extends BaseDataBase {
     async mudarModulo(id: string, modulo: number): Promise<string> {
         await this.getConnetion()
             .update({ modulo })
-            .into("turma")
+            .into("Turma")
             .where({ id })
 
         return `O modulo foi alterado com sucesso!`
@@ -40,7 +40,7 @@ export class TurmaData extends BaseDataBase {
 
         const result = await this.getConnetion()
             .select("*")
-            .from("turma")
+            .from("Turma")
             .where({ id })
     
         return result

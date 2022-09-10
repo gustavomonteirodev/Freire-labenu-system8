@@ -41,3 +41,13 @@ Content-Type: application/json
 {
     "turmaId": "id da nova turma"
 }
+
+###
+POST  http://localhost:3003/criar-turma
+Content-Type: application/json
+
+{
+    "id":"001",
+    "nome": "freire",
+    "modulo": "1"
+}
