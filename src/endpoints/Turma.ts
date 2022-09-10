@@ -17,7 +17,7 @@ class TurmaController {
             const turma = new Turma(nome)
             const turmaData = new TurmaData()
 
-            const response = await turmaData.criarTurma(turma);
+            const response = await turmaData.criarTurma(turma, Date.now().toString());
 
             res.status(201).send({ message: response })
 
