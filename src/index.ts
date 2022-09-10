@@ -8,6 +8,7 @@ const estudante = new StudentController()
 
 app.get("/estudante/:nome", estudante.getStudentByName)
 app.post("/estudante", estudante.CreateStudent)
+app.post("/estudante/mudar-turma/:id", estudante.ChangeClass)
 
 // app.get("/users", getAllUsers)
 const server = app.listen(process.env.PORT || 3003, () => {
