@@ -1,15 +1,15 @@
 import { Request, Response } from "express"
 import moment from "moment"
-import StudentData from "../data/StudentData"
+import EstudanteData from "../data/EstudanteData"
 import { EmailJaCadastrado } from "../error/EmailJaCadastrado"
 import { EstudanteNaoCadastrado } from "../error/EstudanteNaoCadastrado"
 import { MissingFields } from "../error/MissingFields"
 import { UsuarioNaoCadastrado } from "../error/UsuarioNaoCadastrado"
 import { Estudante } from "../Informations"
 
-class StudentController {
+class EstudanteEndpoint {
 
-    async CreateStudent(req: Request, res: Response) {
+    async criarEstudante(req: Request, res: Response) {
         try {
             
             const { nome, email, dataNasc, turmaId, hobbies } = req.body
@@ -18,10 +18,10 @@ class StudentController {
                 throw new MissingFields()
             }
 
-            const studentData: StudentData = new StudentData()
+            const estudanteData: EstudanteData = new EstudanteData()
             // instanciar classe turma aqui
 
-            const emailExiste = await studentData.selectStudentByEmail(email)
+            const emailExiste = await estudanteData.selecionarEstudantePorEmail(email)
 
             if(emailExiste) {
                 throw new EmailJaCadastrado()
@@ -35,7 +35,7 @@ class StudentController {
 
             const dataConvertida = moment(dataNasc, "DD/MM/YYY").format("YYYY-MM-DD")
 
-            const student: Estudante = new Estudante(
+            const estudante: Estudante = new Estudante(
                 Date.now().toString(),
                 nome,
                 email,
@@ -43,7 +43,7 @@ class StudentController {
                 turmaId
             )
             
-            const response = await studentData.insertStudent(student)
+            const response = await estudanteData.inserirEstudante(estudante)
             
             res.status(201).send({ message: response })
 
@@ -52,13 +52,13 @@ class StudentController {
         }
     }
 
-    async getStudentByName(req: Request, res: Response) {
+    async buscarEstudantePorName(req: Request, res: Response) {
         try {
             const { nome } = req.params
 
-            const studentData: StudentData = new StudentData()
+            const estudanteData: EstudanteData = new EstudanteData()
 
-            const buscarEstudante = await studentData.selectStudentByName(nome)
+            const buscarEstudante = await estudanteData.selecionarEstudantePorNome(nome)
 
             if(!buscarEstudante){
                 throw new EstudanteNaoCadastrado()
@@ -70,14 +70,14 @@ class StudentController {
         }
     }
 
-    async ChangeClass(req: Request, res: Response) {
+    async mudarTurmaEstudante(req: Request, res: Response) {
         try {
             const id = req.params.id
             const { turmaId } = req.body
 
-            const studentData = new StudentData()
+            const estudanteData = new EstudanteData()
 
-            const estudanteExiste = await studentData.selectStudentById(id)
+            const estudanteExiste = await estudanteData.selecionarEstudantePorId(id)
 
             if(!estudanteExiste){
                 throw new UsuarioNaoCadastrado()
@@ -91,7 +91,7 @@ class StudentController {
             //     throw new turmaInvalida()
             // }
 
-            const response = await studentData.updateStudentClass(id,turmaId)
+            const response = await estudanteData.atualizarClasseDoEstudante(id,turmaId)
 
             res.status(200).send({message:response})
         } catch (error: any) {
@@ -100,4 +100,4 @@ class StudentController {
     }
 }
 
-export default StudentController
+export default EstudanteEndpoint
