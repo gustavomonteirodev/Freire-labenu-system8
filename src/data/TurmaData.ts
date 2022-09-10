@@ -3,10 +3,10 @@ import BaseDataBase from "./BaseDataBase";
 
 export class TurmaData extends BaseDataBase {
 
-    async criarTurma(turma: Turma): Promise<string> {
+    async criarTurma(turma: Turma, id:string): Promise<string> {
 
         await this.getConnetion().insert({
-            id: turma.getId(),
+            id: id,
             nome: turma.getNome()
         }).into("Turma")
 

@@ -57,7 +57,7 @@ export class Docente extends InfoPessoais {
 
 
 export class Turma{
-    private id:string | undefined = Date.now().toString()
+    private id:string | undefined
     private nome:string | undefined
     private modulo:string | undefined
 
