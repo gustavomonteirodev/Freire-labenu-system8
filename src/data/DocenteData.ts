@@ -9,7 +9,7 @@ export class DocenteData extends BaseDataBase {
             id: docente.getId(),
             nome: docente.getNome(),
             email: docente.getEmail(),
-            data_nascimento: docente.getDataNasc(),
+            data_nasc: docente.getDataNasc(),
             turma_id: docente.getTurmaId(),
         }).into("Docente")
 
@@ -32,7 +32,7 @@ export class DocenteData extends BaseDataBase {
             .from("Docente")
 
         const teacherList = result.map((docente) => {
-            return new Docente(docente.nome, docente.email, docente.data_nasc, docente.turma_id, docente.id)
+            return new Docente(docente.id, docente.nome, docente.email, docente.data_nasc, docente.turma_id)
         })
 
         return teacherList

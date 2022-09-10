@@ -1,9 +1,11 @@
 import { Request, Response } from "express"
 import moment from "moment"
 import EstudanteData from "../data/EstudanteData"
+import { TurmaData } from "../data/TurmaData"
 import { EmailJaCadastrado } from "../error/EmailJaCadastrado"
 import { EstudanteNaoCadastrado } from "../error/EstudanteNaoCadastrado"
 import { MissingFields } from "../error/MissingFields"
+import { TurmaInvalida } from "../error/TurmaInvalida"
 import { UsuarioNaoCadastrado } from "../error/UsuarioNaoCadastrado"
 import { Estudante } from "../Informations"
 
@@ -12,14 +14,14 @@ class EstudanteEndpoint {
     async criarEstudante(req: Request, res: Response) {
         try {
             
-            const { nome, email, dataNasc, turmaId, hobbies } = req.body
+            const { nome, email, dataNasc, turmaId } = req.body
 
-            if (!nome || !email || !dataNasc || !turmaId || !hobbies) {
+            if (!nome || !email || !dataNasc || !turmaId) {
                 throw new MissingFields()
             }
 
             const estudanteData: EstudanteData = new EstudanteData()
-            // instanciar classe turma aqui
+            const turmaData: TurmaData = new TurmaData()
 
             const emailExiste = await estudanteData.selecionarEstudantePorEmail(email)
 
@@ -27,13 +29,13 @@ class EstudanteEndpoint {
                 throw new EmailJaCadastrado()
             }
 
-            // const idTurmaExiste = await turmadata.buscarTurmaPeloId(turmaId)
+            const idTurmaExiste = await turmaData.buscarTurmaPeloId(turmaId)
 
-            // if (!idTurmaExiste.length) {
-            //     throw new turmaInvalida()
-            // }
+            if (!idTurmaExiste.length) {
+                throw new TurmaInvalida()
+            }
 
-            const dataConvertida = moment(dataNasc, "DD/MM/YYY").format("YYYY-MM-DD")
+            const dataConvertida = new Date(moment(dataNasc, "DD/MM/YYYY").format("YYYY-MM-DD"))
 
             const estudante: Estudante = new Estudante(
                 Date.now().toString(),
@@ -83,13 +85,13 @@ class EstudanteEndpoint {
                 throw new UsuarioNaoCadastrado()
             }
 
-            // const turmadata = new TurmaData()
+            const turmadata = new TurmaData()
 
-            // const idTurmaExiste = await turmadata.buscarTurmaPeloId(turmaId)
+            const idTurmaExiste = await turmadata.buscarTurmaPeloId(turmaId)
 
-            // if (!idTurmaExiste.length) {
-            //     throw new turmaInvalida()
-            // }
+            if (!idTurmaExiste.length) {
+                throw new TurmaInvalida()
+            }
 
             const response = await estudanteData.atualizarClasseDoEstudante(id,turmaId)
 

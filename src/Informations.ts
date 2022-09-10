@@ -3,7 +3,7 @@ class InfoPessoais {
         private id: string,
         private nome: string,
         private email: string,
-        private data_nasc: string,
+        private data_nasc: Date,
         private turma_id: string
     ) {
     }
@@ -17,7 +17,7 @@ class InfoPessoais {
     getEmail(): string {
         return this.email
     }
-    getDataNasc(): string {
+    getDataNasc(): Date {
         return this.data_nasc
     }
     getTurmaId(): string {
@@ -27,7 +27,7 @@ class InfoPessoais {
 
 export class Estudante extends InfoPessoais {
     private hobbies: string[] = []
-    constructor(id: string, nome: string, email: string, data_nasc: string, turma_id: string, hobbies?: string[]) {
+    constructor(id: string, nome: string, email: string, data_nasc: Date, turma_id: string, hobbies?: string[]) {
         super(id, nome, email, data_nasc, turma_id)
         if(hobbies) {
             this.hobbies = hobbies
@@ -41,7 +41,7 @@ export class Estudante extends InfoPessoais {
 
 export class Docente extends InfoPessoais {
     private especialidades: string[] = []
-    constructor(id: string, nome: string, email: string, data_nasc: string, turma_id: string, especialidades?: string[]) {
+    constructor(id: string, nome: string, email: string, data_nasc: Date, turma_id: string, especialidades?: string[]) {
         super(id, nome, email, data_nasc, turma_id)
         if(especialidades) {
             this.especialidades = this.especialidades

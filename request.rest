@@ -2,22 +2,21 @@ POST http://localhost:3003/estudante
 Content-Type: application/json
 
 {
-    "nome":"Estudante Teste",
-    "email": "estudanteTest@email.com",
-    "dataNasc": "1998-05-25",
-    "turmaId": "implementar posteriormente",
-    "hobbies": "['hobbie1', 'hobbie2', 'hobbie3']"
+    "nome":"Rafael Correia",
+    "email": "rafael@email.com",
+    "dataNasc": "31/07/1975",
+    "turmaId": "1662843854152"
 }
 
 ###
-GET http://localhost:3003/estudante/testeNome
+GET http://localhost:3003/estudante/Rafael%20Correia
 
 ###
-POST http://localhost:3003/estudante/mudar-turma/idDoestudante
+POST http://localhost:3003/estudante/mudar-turma/1662846764464
 Content-Type: application/json
 
 {
-    "turmaId": "idDaTurma"
+    "turmaId": "1662843854152"
 }
 
 ###
@@ -28,18 +27,18 @@ POST http://localhost:3003/docente
 Content-Type: application/json
 
 {
-    "nome": "Nome Docente teste",
-    "email": "docente@email.com",
-    "dataNasc": "01/01/1981",
-    "turmaId": "id da Turma"
+    "nome": "Gustavo Monteiro",
+    "email": "gustavo@email.com",
+    "dataNasc": "05/11/1971",
+    "turmaId": "1662843854152"
 }
 
 ###
-POST  http://localhost:3003/docente/mudar-turma/idDoDocente
+POST  http://localhost:3003/docente/mudar-turma/1662847913737
 Content-Type: application/json
 
 {
-    "turmaId": "id da nova turma"
+    "turmaId": "1662843854152"
 }
 
 ###
