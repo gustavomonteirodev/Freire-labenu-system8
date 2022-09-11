@@ -1,6 +1,6 @@
 ![labe](https://user-images.githubusercontent.com/104602579/189521921-9760ddfd-ed7e-4634-9f93-2e3b9fce4fe8.png)
 
-# Freire-labenu-system8 💻
+# Lebenu System 8 💻
 O projeto se trata de um banco de dados relacionais que simula o banco de dados que a Labenu utiliza para cadastro e modificações de turmas.
 
 ## Deploy 🔗
