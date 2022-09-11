@@ -13,7 +13,7 @@ app.post("/criar-turma",turma.criar)
 app.get("/buscar-turmas-ativas",turma.ativa)
 app.post("/mudar-modulo/:id",turma.modulo)
 
-app.get("/estudante/:nome", estudante.buscarEstudantePorName)
+app.get("/estudante/:nome", estudante.buscarEstudantePorNome)
 app.post("/estudante", estudante.criarEstudante)
 app.post("/estudante/mudar-turma/:id", estudante.mudarTurmaEstudante)
 

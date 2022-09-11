@@ -5,6 +5,8 @@ import { MissingFields } from "../error/MissingFields"
 import moment from "moment"
 import { Docente } from "../Informations"
 import { UsuarioNaoCadastrado } from "../error/UsuarioNaoCadastrado"
+import { TurmaData } from "../data/TurmaData"
+import { TurmaInvalida } from "../error/TurmaInvalida"
 
 class DocenteEndpoint {
 
@@ -24,13 +26,15 @@ class DocenteEndpoint {
                 throw new EmailJaCadastrado()
             }
 
-            // const idTurmaExiste = await turmaData.buscarTurmaPeloId(idTurma)
+            const turmaData = new TurmaData()
 
-            // if (!idTurmaExiste.length) {
-            //     throw new turmaInvalida()
-            // }
+            const idTurmaExiste = await turmaData.buscarTurmaPeloId(turmaId)
 
-            const dataConvertida = moment(dataNasc, "DD/MM/YYYY").format("YYYY-MM-DD")
+            if (!idTurmaExiste.length) {
+                throw new TurmaInvalida()
+            }
+
+            const dataConvertida = new Date(moment(dataNasc, "DD/MM/YYYY").format("YYYY-MM-DD"))
 
             const docente = new Docente(
                 Date.now().toString(),
@@ -75,13 +79,13 @@ class DocenteEndpoint {
                 throw new UsuarioNaoCadastrado()
             }
 
-            // const turmadata = new TurmaData()
+            const turmadata = new TurmaData()
 
-            // const idTurmaExiste = await turmadata.buscarTurmaPeloId(turmaId)
+            const idTurmaExiste = await turmadata.buscarTurmaPeloId(turmaId)
 
-            // if (!idTurmaExiste.length) {
-            //     throw new turmaInvalida()
-            // }
+            if (!idTurmaExiste.length) {
+                throw new TurmaInvalida()
+            }
 
             const response = await docenteData.atualizarClasseDoDocente(id, turmaId)
 

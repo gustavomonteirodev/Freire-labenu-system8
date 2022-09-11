@@ -15,14 +15,14 @@ class EstudanteData extends BaseDataBase {
             })
             .into("Estudante")
 
-            return `O estudante ${student.getNome} foi criado com sucesso!`
+            return `O estudante ${student.getNome()} foi criado com sucesso!`
     }
     
     async selecionarEstudantePorEmail(email: string) {
 
         const result = await this.getConnetion()
             .select("*")
-            .from("estudante")
+            .from("Estudante")
             .where({ email })
 
         return result[0]
