@@ -39,7 +39,7 @@ Toda turma é composta das seguintes características: id, nome, data de início
 
 → Pegar a idade de algum estudante a partir do id
 
-## Tecnologias/Tools ⚛️
+## ⚛️ Tecnologias/Tools 
 - Nodejs;
 - Express/Cors; 
 - MySQL - banco relacional; 
