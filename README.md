@@ -38,3 +38,8 @@ Toda turma é composta das seguintes características: id, nome, data de início
 
 </div> 
 
+<footer>
+<p style="float:left; width: 16%;">
+Copyright © Gustavo Monteiro/Rafael Correia, 2022
+</p>
+</footer>
