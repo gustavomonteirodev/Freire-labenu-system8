@@ -12,7 +12,6 @@ O projeto se trata de um banco de dados relacionais que simula o banco de dados 
 2. Abra um terminal ([Git Bash](https://git-scm.com/) é o recomendado);
 3. Navegue até a pasta do projeto pelo seu terminal;
 4. Execute, dentro dela, o comando **npm install**;
-5. Instale a lib moment - **npm install moment**;
 5. Quando acabar, rode o comando **npm run start**;
 
 ## ⚒ Entidades utilizadas 
