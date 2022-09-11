@@ -31,7 +31,7 @@ Toda turma é composta das seguintes características: id, nome, data de início
 → Pegar a idade de algum estudante a partir do id
 
 ## Desenvolvedores 🧑‍💻
-<div align="center"> 
+<div align="left"> 
 
 | [<img src="https://user-images.githubusercontent.com/60453269/183482401-f2734146-1eb6-4f49-9788-144dae668db4.png" width=150><br><sub> Gustavo Monteiro </sub>](https://www.linkedin.com/in/gustavomonteirodev/) |  [<img src="https://avatars.githubusercontent.com/u/95589176?v=4" width=150><br><sub>Rafael Correia </sub>](https://www.linkedin.com/in/rafaelccorreia/) |
 |---|---|
