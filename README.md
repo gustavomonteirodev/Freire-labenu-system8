@@ -1,7 +1,7 @@
 ![labe](https://user-images.githubusercontent.com/104602579/189521921-9760ddfd-ed7e-4634-9f93-2e3b9fce4fe8.png)
 
 # 💻 Lebenu System 8 
-O projeto se trata de um banco de dados relacionais que simula o banco de dados que a Labenu utiliza para cadastro e modificações de turmas.
+O projeto se trata de um banco de dados relacionais - MySQL que simula o banco de dados que a Labenu utiliza para cadastro e modificações de turmas.
 
 ## 🔗 Deploy 
 [Clicar para acessar API Labenu System 8](https://documenter.getpostman.com/view/21557009/2s7YYoAkyD)
